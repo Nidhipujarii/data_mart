@@ -1,7 +1,9 @@
 use case1;
 select * from weekly_sales limit 10;
+
 -- data cleaning
 -- Adding week_number, month_number and calendar_year columns 
+
 create table clean_weekly_sales1 as
 select week_date,
 week(week_date) as 'week_number',
@@ -13,6 +15,7 @@ case
     when segment = null then 'unknown'
     else segment
     end as segment,
+	
 -- Adding a new column called age_band after the original segment
 case 
     when right(segment,1) = '1' then 'young_adults'
@@ -20,6 +23,7 @@ case
 	when right(segment,1) in ('3','4')  then 'retires'
     else 'unknown'
     end as age_band,
+	
 -- adding demographic column to specify couples and families
 case
     when left(segment,1) = 'C' then 'couples'
@@ -27,13 +31,16 @@ case
     else 'unknown'
     end as demographic,
 customer_type, transactions, sales,
+	
 -- Generate a new avg_transaction column as the sales value divided
 -- by transactions rounded to 2 decimal places
 round(sales/transactions,2) as 'avg_transaction'
 from weekly_sales;
  
  select * from clean_weekly_sales1 limit 10;
+
 -- Which week numbers are missing from the dataset?
+
 create table seq100
 (x int not null auto_increment primary key);
 insert into seq100 values (),(),(),(),(),(),(),(),(),();
@@ -49,17 +56,25 @@ select calendar_year, sum(transactions) as total_transactions
 from clean_weekly_sales1
 group by calendar_year;
 select * from clean_weekly_sales1 limit 10;
+
 -- What are the total sales for each region for each month? 
+
 select sum(sales) as total_sales, region, month_number
 from clean_weekly_sales1
 group by region, month_number;
+
 -- How many total transactions were there for each year in the dataset?
+
 select platform, count(transactions)
 from clean_weekly_sales1
 group by platform;
+
 -- What is the total count of transactions for each platform
+
 select paltform, sum(transcactions) as total_transactions from clean_weekly_sales;
+
 -- What is the percentage of sales for Retail vs Shopify for each month?
+
 WITH cte_monthly_platform_sales AS (
   SELECT
     month_number,calendar_year,
@@ -83,7 +98,9 @@ SELECT
 FROM cte_monthly_platform_sales
 GROUP BY month_number,calendar_year
 ORDER BY month_number,calendar_year;
+
 -- What is the percentage of sales by demographic for each year in the dataset?
+
 SELECT
   calendar_year,
   demographic,

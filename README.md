@@ -1,4 +1,4 @@
-***Data Mart Project**8
+# Data Mart Project
 
 ***Project Overview***
 This Data Mart project aims to provide insights into weekly sales data, including sales figures, transactions, and customer demographics. The data has been cleaned and transformed to facilitate easy analysis.

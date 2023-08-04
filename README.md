@@ -1,4 +1,4 @@
-**Data Mart Project**
+***Data Mart Project**8
 
 ***Project Overview***
 This Data Mart project aims to provide insights into weekly sales data, including sales figures, transactions, and customer demographics. The data has been cleaned and transformed to facilitate easy analysis.
@@ -6,7 +6,8 @@ This Data Mart project aims to provide insights into weekly sales data, includin
 ***CONTENTS***
 
 ***Data Cleaning***
-The original weekly_sales table has been transformed into clean_weekly_sales1 with the following additional columns:
+
+- The original weekly_sales table has been transformed into clean_weekly_sales1 with the following additional columns:
 
 - week_number: The week number extracted from the week_date.
 - month_number: The month number extracted from the week_date.
